@@ -11,6 +11,9 @@ const TOKENS = [
     { symbol: 'USDC', mint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v', decimals: 6, icon: '💵' },
     { symbol: 'USDT', mint: 'Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB', decimals: 6, icon: '💲' },
     { symbol: 'BONK', mint: 'DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263', decimals: 5, icon: '🐕' },
+    { symbol: 'JUP', mint: 'JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN', decimals: 6, icon: '🪐' },
+    { symbol: 'PENGU', mint: '2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv', decimals: 6, icon: '🐧' },
+    { symbol: 'JupSOL', mint: 'jupSoLaHXQiZZTSfEWMTRRgpnyFm8f6sZdosWBjx93v', decimals: 9, icon: '🌟' },
 ];
 
 interface SwapState {
@@ -151,10 +154,10 @@ export function TradingPage() {
                                     setState(s => ({ ...s, quote: null }));
                                 }
                             }}
-                            className="bg-muted border border-border rounded-xl px-4 py-3 text-lg font-medium min-w-[140px]"
+                            className="bg-muted border border-border rounded-xl px-4 py-3 text-lg font-medium min-w-[140px] text-blue-900"
                         >
                             {TOKENS.map(t => (
-                                <option key={t.symbol} value={t.symbol} disabled={t.symbol === outputToken.symbol}>
+                                <option key={t.symbol} value={t.symbol} disabled={t.symbol === outputToken.symbol} className="text-blue-900 bg-white">
                                     {t.icon} {t.symbol}
                                 </option>
                             ))}
@@ -195,10 +198,10 @@ export function TradingPage() {
                                     setState(s => ({ ...s, quote: null }));
                                 }
                             }}
-                            className="bg-muted border border-border rounded-xl px-4 py-3 text-lg font-medium min-w-[140px]"
+                            className="bg-muted border border-border rounded-xl px-4 py-3 text-lg font-medium min-w-[140px] text-blue-900"
                         >
                             {TOKENS.map(t => (
-                                <option key={t.symbol} value={t.symbol} disabled={t.symbol === inputToken.symbol}>
+                                <option key={t.symbol} value={t.symbol} disabled={t.symbol === inputToken.symbol} className="text-blue-900 bg-white">
                                     {t.icon} {t.symbol}
                                 </option>
                             ))}

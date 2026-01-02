@@ -6,7 +6,7 @@ export const Navbar = () => {
     const location = useLocation();
 
     const navLinks = [
-        { path: '/', label: 'Lending', icon: Wallet },
+        { path: '/', label: 'Liquidity Pool', icon: Wallet },
         { path: '/trade', label: 'Trade', icon: ArrowLeftRight },
     ];
 
@@ -36,8 +36,8 @@ export const Navbar = () => {
                                 key={path}
                                 to={path}
                                 className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all ${location.pathname === path
-                                        ? 'bg-primary/20 text-primary'
-                                        : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                                    ? 'bg-primary/20 text-primary'
+                                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                                     }`}
                             >
                                 <Icon size={18} />

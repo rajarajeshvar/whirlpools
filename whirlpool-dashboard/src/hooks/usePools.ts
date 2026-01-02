@@ -38,6 +38,24 @@ const POPULAR_POOLS = [
         feeTier: 0.01,
         decimalsA: 9,
         decimalsB: 9
+    },
+    {
+        // PENGU/SOL Whirlpool (SOL is tokenA in this pool)
+        address: "GF8T9bW7oJr5s4zL9Ai8yMwxx5MHm45G7BvArBkfjGJV",
+        tokenA: "SOL",
+        tokenB: "PENGU",
+        feeTier: 0.30,
+        decimalsA: 9,
+        decimalsB: 6
+    },
+    {
+        // JUP/SOL Whirlpool
+        address: "C1MgLojNLWBKADvu9BHdtgzz1oZX4dZ5zGdGcgvvW8Wz",
+        tokenA: "JUP",
+        tokenB: "SOL",
+        feeTier: 0.30,
+        decimalsA: 6,
+        decimalsB: 9
     }
 ];
 
