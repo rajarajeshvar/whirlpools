@@ -9,7 +9,6 @@
     "checkJs": false,
     "types": []
   },
-  "files": [],
   "include": [],
   "exclude": [
     "**/*"

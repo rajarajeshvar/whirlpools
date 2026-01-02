@@ -126,3 +126,62 @@ export const api = {
         return response.json();
     }
 };
+
+// --- Trading API (separate backend on port 3002) ---
+
+const TRADING_API_URL = 'http://localhost:3002';
+
+export interface SwapQuote {
+    route: 'JUPITER' | 'ORCA';
+    inputMint: string;
+    outputMint: string;
+    inAmount: string;
+    outAmount: string;
+    priceImpact: string;
+    slippageBps: number;
+    tx: string;
+}
+
+export const tradingApi = {
+    async getQuote(params: {
+        inputMint: string;
+        outputMint: string;
+        amount: string;
+        slippageBps?: number;
+        userPubkey: string;
+    }): Promise<SwapQuote> {
+        const queryParams = new URLSearchParams({
+            inputMint: params.inputMint,
+            outputMint: params.outputMint,
+            amount: params.amount,
+            slippageBps: (params.slippageBps || 50).toString(),
+            userPubkey: params.userPubkey,
+        });
+
+        const response = await fetch(`${TRADING_API_URL}/trade/quote?${queryParams}`);
+        if (!response.ok) {
+            const error = await response.json().catch(() => ({ error: response.statusText }));
+            throw new Error(error.error || 'Failed to get quote');
+        }
+        return response.json();
+    },
+
+    async buildTx(params: {
+        inputMint: string;
+        outputMint: string;
+        amount: string;
+        slippageBps?: number;
+        userPubkey: string;
+    }): Promise<{ tx: string; route: string }> {
+        const response = await fetch(`${TRADING_API_URL}/trade/build`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(params),
+        });
+        if (!response.ok) {
+            const error = await response.json().catch(() => ({ error: response.statusText }));
+            throw new Error(error.error || 'Failed to build transaction');
+        }
+        return response.json();
+    },
+};
